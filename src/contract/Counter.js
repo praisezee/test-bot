@@ -32,7 +32,7 @@ export default class Counter {
             .storeUint(0, 64) // query id
             .endCell();
             await provider.internal(via, {
-                  value: "0.2", // send 0.002 TON for gas
+                  value: "0", // send 0.002 TON for gas
                   body: messageBody,
             });
       }

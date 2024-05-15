@@ -1,0 +1,62 @@
+.h-screen{
+      height: 100dvh !important;
+}
+
+.text-small{
+      font-size: x-small;
+}
+
+.text-medium{
+      font-size: 0.9rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.oblique-button {
+  position: relative;
+  width: 15rem;
+  height: 15rem;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #076107, #34ee0f);
+  box-shadow: 10px 10px 30px #076107, -10px -10px 30px #34ee0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  transform: skew(-10deg, 10deg);
+}
+
+.oblique-button:active {
+  box-shadow: inset 10px 10px 30px #34ee0f, inset -10px -10px 30px #076107;
+}
+
+.button-image {
+  width: 80px;
+  height: 80px;
+}
+
+.counter-display {
+  position: absolute;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform:translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform:translateY(-200px);
+  }
+}

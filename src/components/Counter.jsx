@@ -1,45 +1,42 @@
-import { TonConnectButton } from "@tonconnect/ui-react";
-import { useCounterContract } from "../hooks/useCounterContract";
-import { useTonConnect } from "../hooks/useTonConnect";
-
-import {
-  Card,
-  FlexBoxCol,
-  FlexBoxRow,
-  Ellipsis,
-  Button,
-} from "./styled/styled";
+import { useState } from "react";
 
 export function Counter() {
-  const { connected } = useTonConnect();
-  const { value, address, sendIncrement } = useCounterContract();
+  const [counter, setCounter] = useState([]);
+  const [showNumber, setShowNumber] = useState(false);
+  const [position, setPosition] = useState({ top: '50%', left: '50%' });
+
+  const handleClick = () => {
+    setCounter([...counter,1]);
+    setShowNumber(true);
+
+    // Generate random position
+    const randomTop = Math.random() * 80 + 10 + '%';
+    const randomLeft = Math.random() * 80 + 10 + '%';
+    setPosition({ top: randomTop, left: randomLeft });
+
+    setTimeout(() => {
+      setShowNumber(false);
+    }, 1000);
+  };
 
   return (
-    <div className="Container">
-      <TonConnectButton />
-
-      <Card>
-        <FlexBoxCol>
-          <h3>Counter</h3>
-          <FlexBoxRow>
-            <b>Address</b>
-            <Ellipsis>{address}</Ellipsis>
-          </FlexBoxRow>
-          <FlexBoxRow>
-            <b>Value</b>
-            <div>{value ?? "Loading..."}</div>
-          </FlexBoxRow>
-          <Button
-            disabled={!connected}
-            className={`Button ${connected ? "Active" : "Disabled"}`}
-            onClick={() => {
-              sendIncrement();
-            }}
+    <div className="button-container">
+      <button className="oblique-button" onClick={handleClick}>
+        <img
+          src="vite.svg"
+          alt="Button Icon"
+          className="button-image"
+        />
+        { showNumber && counter.map( count => (
+          <span
+            className="counter-display"
+            style={ { top: position.top, left: position.left } }
+            key={counter.indexOf(count)}
           >
-            Increment
-          </Button>
-        </FlexBoxCol>
-      </Card>
+            { count }
+          </span>
+        ) ) }
+      </button>
     </div>
   );
 }

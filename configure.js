@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createInterface } from "readline";
-import fs from "fs";
 
 const rl = createInterface({
   input: process.stdin,
@@ -26,41 +25,26 @@ const banner = `
 
 console.log(banner);
 
-let githubUsername, githubRepo, botUsername;
+let url, botUsername;
 
 (async () => {
-  try {
-    const file = fs.readFileSync(".git/config").toString();
-    const url = file.match(/url = (.*)/)[1];
-    console.log(url);
-    const params = url.match(/github.com[/:]([^/]*)\/(.*)\.git/);
-    githubUsername = params[1];
-    githubRepo = params[2];
-  } catch (e) {}
+  
 
   const accessToken = await question("Enter your bot access token: ");
   if (!accessToken?.length > 0) exitError("Token is required");
 
-  const githubUsernameQ = await question(
-    `Enter your github username${
-      githubUsername ? ` (${githubUsername})` : ``
-    }: `
+  const urlQ = await question(
+    `Enter your webapp url: `
   );
-  githubUsername = githubUsernameQ || githubUsername;
-  if (!githubUsername?.length > 0) exitError("Github username is required");
+  if (!urlQ?.length > 0) exitError("URL is required");
 
-  const githubRepoQ = await question(
-    `Enter your forked repo name${githubRepo ? ` (${githubRepo})` : ``}: `
-  );
-  githubRepo = githubRepoQ || githubRepo;
-  if (!githubRepo?.length > 0) exitError("Repo name is required");
-
+  url = urlQ;
+  
   const getBot = await axios.get(
     `https://api.telegram.org/bot${accessToken}/getMe`
   ).catch(exitError);
 
   botUsername = getBot.data.result.username;
-  const url = `https://${githubUsername}.github.io/${githubRepo}`;
 
   console.log(`\n\nSetting bot ${botUsername} webapp url to ${url}`);
 
