@@ -24,7 +24,7 @@
   border: none;
   border-radius: 50%;
   background: linear-gradient(145deg, #076107, #34ee0f);
-  box-shadow: 10px 10px 30px #076107, -10px -10px 30px #34ee0f;
+  box-shadow:10px 10px 30px #076107, -10px -10px 30px #34ee0f;
   display: flex;
   justify-content: center;
   align-items: center;
