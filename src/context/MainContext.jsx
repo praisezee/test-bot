@@ -28,6 +28,7 @@ export const MainProvider = ( { children } ) =>
 
   useEffect( () =>
   {
+    console.log(window.Telegram)
     setUserId(window.Telegram.WebApp.currentUser?.id)
   },[])
   return (
