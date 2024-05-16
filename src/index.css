@@ -1,13 +1,13 @@
 .h-screen{
-      height: 100dvh !important;
+    height: 100dvh !important;
 }
 
 .text-small{
-      font-size: x-small;
+  font-size: x-small;
 }
 
 .text-medium{
-      font-size: 0.9rem;
+  font-size: 0.9rem;
 }
 
 .button-container {
@@ -17,6 +17,11 @@
   height: 90vh;
 }
 
+.button-holder{
+  box-shadow:5px 5px 20px #076107, -5px -5px 20px #34ee0f;
+  border-radius: 50%;
+}
+
 .oblique-button {
   position: relative;
   width: 15rem;
@@ -24,30 +29,44 @@
   border: none;
   border-radius: 50%;
   background: linear-gradient(145deg, #076107, #34ee0f);
-  box-shadow:10px 10px 30px #076107, -10px -10px 30px #34ee0f;
+  box-shadow:inset 10px 10px 30px #076107, inset -10px -10px 30px #34ee0f;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   outline: none;
   transform: skew(-10deg, 10deg);
+  
 }
 
 .oblique-button:active {
   box-shadow: inset 10px 10px 30px #34ee0f, inset -10px -10px 30px #076107;
 }
 
+.oblique-button:active > .button-image{
+  transform: scale(0.9);
+}
+
 .button-image {
-  width: 80px;
-  height: 80px;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
 }
 
 .counter-display {
   position: absolute;
-  color: #333;
+  color: #fefefe;
   font-size: 1.5rem;
   font-weight: bold;
   animation: fadeOut 1s forwards;
+}
+
+.shadow-success{
+  box-shadow:5px 5px 15px #076107, -5px -5px 15px #34ee0f;
+}
+
+.bg-custom{
+  background: linear-gradient(145deg, #076107, #2cce0c);
 }
 
 @keyframes fadeOut {
@@ -60,3 +79,5 @@
     transform:translateY(-200px);
   }
 }
+
+

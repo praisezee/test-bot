@@ -1,31 +1,20 @@
-import { useState } from "react";
+import img from "../assets/diss_bg_0.png"
+import useMainContext from "../hooks/useMainContext";
 
 export function Counter() {
-  const [counter, setCounter] = useState([]);
-  const [showNumber, setShowNumber] = useState(false);
-  const [position, setPosition] = useState({ top: '50%', left: '50%' });
-
-  const handleClick = () => {
-    setCounter([...counter,1]);
-    setShowNumber(true);
-
-    // Generate random position
-    const randomTop = Math.random() * 80 + 10 + '%';
-    const randomLeft = Math.random() * 80 + 10 + '%';
-    setPosition({ top: randomTop, left: randomLeft });
-
-    setTimeout(() => {
-      setShowNumber(false);
-    }, 1000);
-  };
+  const {counter,showNumber,position,handleClick,userId} = useMainContext()
 
   return (
     <div className="button-container">
-      <button className="oblique-button" onClick={handleClick}>
+      <p>{ userId }</p>
+      <div className="button-holder">
+        <button className="oblique-button" onClick={handleClick}>
         <img
-          src="vite.svg"
+          src={img}
           alt="Button Icon"
-          className="button-image"
+            className="button-image"
+            draggable={ false }
+            
         />
         { showNumber && counter.map( count => (
           <span
@@ -37,6 +26,7 @@ export function Counter() {
           </span>
         ) ) }
       </button>
+      </div>
     </div>
   );
 }
