@@ -26,11 +26,6 @@ export const MainProvider = ( { children } ) =>
     }, 1000);
   };
 
-  useEffect( () =>
-  {
-    console.log(window.Telegram)
-    setUserId(window.Telegram.WebApp.currentUser?.id)
-  },[])
   return (
     <MainContext.Provider value={ {counter,showNumber,position,handleClick,userId} }>
       {children}

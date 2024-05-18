@@ -69,6 +69,20 @@
   background: linear-gradient(145deg, #076107, #2cce0c);
 }
 
+.three-d-button {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #282c34;
+}
+
+.three-d-button canvas {
+  width: 300px;
+  height: 300px;
+}
+
 @keyframes fadeOut {
   0% {
     opacity: 1;
