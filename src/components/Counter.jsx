@@ -1,8 +1,8 @@
 import useMainContext from "../hooks/useMainContext";
-import ThreeDButton from "./Button";
+import Button from "./Button";
 
 export function Counter() {
-  const {counter,showNumber,position,handleClick,userId} = useMainContext()
+  const {counter,fadingNumber,handleClick,user} = useMainContext()
 
   return (
     <>
@@ -29,8 +29,8 @@ export function Counter() {
       </button>
       </div>
     </div> */}
-    
-      <ThreeDButton />
+      <p className="text-white">total points:{ user.tap }</p>
+      <Button fadingNumber={fadingNumber} onClick={handleClick}/>
     </>
   );
 }

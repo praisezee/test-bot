@@ -6,28 +6,48 @@ const MainContext = createContext({})
 
 export const MainProvider = ( { children } ) =>
 {
-  const [userId,setUserId] = useState('')
-  const [counter, setCounter] = useState([]);
-  const [showNumber, setShowNumber] = useState(false);
-  const [ position, setPosition ] = useState( { top: '50%', left: '50%' } );
+  const [user,setUser] = useState({})
+  const [ counter, setCounter ] = useState( 1 );
+  const [value,setValue] = useState(0)
+  const [fadingNumber,setFadingNumber] = useState([])
   
 
-  const handleClick = () => {
-    setCounter([...counter,1]);
-    setShowNumber(true);
+  const handleClick = (e) =>
+  {
+    const btnRec = e.currentTarget.getBoundingClientRect()
+    const newNumber = {
+      id: value,
+      value: counter,
+      x: e.clientX - btnRec.left,
+      y: e.clientY - btnRec.top
+    };
+    setValue( value + counter )
 
-    // Generate random position
-    const randomTop = Math.random() * 80 + 10 + '%';
-    const randomLeft = Math.random() * 80 + 10 + '%';
-    setPosition({ top: randomTop, left: randomLeft });
+    setFadingNumber([...fadingNumber,newNumber])
 
-    setTimeout(() => {
-      setShowNumber(false);
-    }, 1000);
+    setTimeout( () =>
+    {
+      setFadingNumber(numbs => numbs.filter(num => num.id !== newNumber.id))
+    }, 3000);
   };
 
+  useEffect( () =>
+  {
+    setUser( { ...user, tap: value } )
+  }, [ value ] )
+  
+  useEffect( () =>
+  {
+    const app = window.Telegram?.WebApp;
+    console.log( app );
+    console.log(app.initDataUnsafe)
+    setUser(app.initDataUnsafe)
+  },[])
+
+
+
   return (
-    <MainContext.Provider value={ {counter,showNumber,position,handleClick,userId} }>
+    <MainContext.Provider value={ { counter, fadingNumber, handleClick, user } }>
       {children}
     </MainContext.Provider>
   )

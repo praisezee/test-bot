@@ -14,15 +14,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
 }
 
-.button-holder{
-  box-shadow:5px 5px 20px #076107, -5px -5px 20px #34ee0f;
+.btn-holder{
+  box-shadow:5px 5px 20px #34ee0f , -5px -5px 20px #076107;
   border-radius: 50%;
 }
 
-.oblique-button {
+.custom-button {
   position: relative;
   width: 15rem;
   height: 15rem;
@@ -36,29 +35,30 @@
   cursor: pointer;
   outline: none;
   transform: skew(-10deg, 10deg);
+  overflow: hidden;
   
 }
 
-.oblique-button:active {
+.custom-button:active {
   box-shadow: inset 10px 10px 30px #34ee0f, inset -10px -10px 30px #076107;
 }
 
-.oblique-button:active > .button-image{
+.custom-button:active > .button-image{
   transform: scale(0.9);
 }
 
 .button-image {
-  width: 9rem;
-  height: 9rem;
+  width: 50%;
+  height: 50%;
   border-radius: 50%;
 }
 
-.counter-display {
+.floating-number {
   position: absolute;
   color: #fefefe;
   font-size: 1.5rem;
   font-weight: bold;
-  animation: fadeOut 1s forwards;
+  animation: fadeUp 5s ease-out forwards;
 }
 
 .shadow-success{
@@ -69,28 +69,15 @@
   background: linear-gradient(145deg, #076107, #2cce0c);
 }
 
-.three-d-button {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #282c34;
-}
 
-.three-d-button canvas {
-  width: 300px;
-  height: 300px;
-}
-
-@keyframes fadeOut {
+@keyframes fadeUp {
   0% {
     opacity: 1;
     transform:translateY(0px);
   }
   100% {
     opacity: 0;
-    transform:translateY(-200px);
+    transform:translateY(-900px);
   }
 }
 
