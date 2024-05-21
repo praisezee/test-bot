@@ -2,8 +2,16 @@
     height: 100dvh !important;
 }
 
+.h-fill{
+  height: 85dvh;
+}
+
 .text-small{
   font-size: x-small;
+}
+
+.text-gray{
+  color: #d4c9d4fe;
 }
 
 .text-medium{
@@ -14,6 +22,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.h-10{
+  height: 20% !important;
+}
+
+.h-80{
+  height: 80% !important;
+}
+
+
+.coin{
+  width: 3rem;
+  height: 3rem;
+  border: goldenrod 3px  solid;
+  border-radius: 50%;
+  padding: 2px;
+  box-shadow: inset 10px 10px 30px #076107,inset -10px -10px 30px #34ee0f;
 }
 
 .btn-holder{
@@ -35,7 +61,6 @@
   cursor: pointer;
   outline: none;
   transform: skew(-10deg, 10deg);
-  overflow: hidden;
   
 }
 
@@ -67,6 +92,16 @@
 
 .bg-custom{
   background: linear-gradient(145deg, #076107, #2cce0c);
+}
+
+.bg-custom-dark-95{
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.radial-bg{
+  background: radial-gradient(#34ee0f,#076107,#000);
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 

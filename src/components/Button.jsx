@@ -3,7 +3,7 @@ import img from "../assets/diss_bg_0.png"
 
 const Button = ({onClick,fadingNumber}) => {
   return (
-    <div className='button-container'>
+    <div className='button-container h-80'>
       <div className="btn-holder">
         <button className="custom-button" onClick={ onClick }>
           <img src={ img } className="button-image" alt="" />
