@@ -17,13 +17,15 @@ const manifestUrl =
 ReactDOM.createRoot(document.getElementById("root")).render(
   <TonConnectUIProvider manifestUrl={manifestUrl}>
     {/* <QueryClientProvider client={queryClient}> */ }
-    <MainProvider>
       <Router>
         <Routes>
-          <Route path="/*" element={<App />} />
+        <Route path="/*" element={
+          <MainProvider>
+            <App />
+          </MainProvider>
+        } />
         </Routes>
       </Router>
-    </MainProvider>
     {/* </QueryClientProvider> */}
   </TonConnectUIProvider>
 );
